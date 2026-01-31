@@ -20,18 +20,18 @@ const corsOptions = {
     // Allow requests with no origin (like mobile apps or curl requests)
     if (!origin) return callback(null, true);
     
-    // Allowed origins
+    // In development, allow any origin
+    if (process.env.NODE_ENV === 'development') {
+      return callback(null, true);
+    }
+    
+    // Allowed origins for production
     const allowedOrigins = [
       'https://hostel-grievance-addresal-4jbz.vercel.app',
       'https://hostel-grievance-addresal.onrender.com',
       'http://localhost:5173',
       'http://localhost:3000'
     ];
-    
-    if (process.env.NODE_ENV === 'development') {
-      // In development, allow any origin
-      return callback(null, true);
-    }
     
     if (allowedOrigins.indexOf(origin) !== -1) {
       return callback(null, true);
@@ -49,9 +49,6 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 
-// Handle preflight requests
-app.options('*', cors(corsOptions));
-
 // Serve static files from uploads directory
 app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
 
@@ -64,6 +61,16 @@ app.use("/api/polls", pollRoutes);
 app.use("/api/lost-and-found", lostAndFoundRoutes);
 app.use("/api/notifications", notificationRoutes);
 app.use("/api/auth", authRoutes);
+
+// Health check endpoint
+app.get('/api/health', (req, res) => {
+  res.json({ 
+    status: 'OK', 
+    message: 'Backend is running',
+    timestamp: new Date().toISOString(),
+    uptime: process.uptime()
+  });
+});
 
 app.use(errorHandler);
 
