@@ -2,16 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "client/index.html",
+      "src": "client/package.json",
       "use": "@vercel/static-build",
-      "config": { "distDir": "client/dist" }
+      "config": { "distDir": "dist" }
     }
   ],
   "routes": [
     { "handle": "filesystem" },
-    { "src": "/(.*)", "dest": "/index.html" }
-  ],
-  "env": {
-    "VITE_API_URL": "@api_url"
-  }
+    { "src": "/(.*)", "dest": "/client/$1" },
+    { "src": "/(.*)", "dest": "/client/index.html" }
+  ]
 }
