@@ -111,7 +111,7 @@ A comprehensive hostel management system built with Node.js, Express, MongoDB, a
 
 ### **1. Clone the Repository**
 ```bash
-git clone <repository-url>
+git clone git@github.com:mythrhyth/hostel_grievance_addresal.git
 cd hostel_grievance_addresal
 ```
 
@@ -535,5 +535,6 @@ For support or questions:
 - Contact the development team
 - Check the documentation
 - Review the troubleshooting guide
+
 
 **Built with ❤️ for hostel management excellence**
