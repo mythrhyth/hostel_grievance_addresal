@@ -9,7 +9,7 @@
   ],
   "routes": [
     { "handle": "filesystem" },
-    { "src": "/(.*)", "dest": "/client/$1" },
-    { "src": "/(.*)", "dest": "/client/index.html" }
+    { "src": "/assets/(.*)", "dest": "/client/dist/assets/$1" },
+    { "src": "/(.*)", "dest": "/client/dist/index.html" }
   ]
 }
