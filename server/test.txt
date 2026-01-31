@@ -1,0 +1,60 @@
+{
+  "name": "User",
+  "email": "user@test.com",
+  "password": "123456",
+  "hostel": "Boys Hostel",
+  "block": "A",
+  "room": "101"
+}
+{
+  "name": "Student One",
+  "email": "student1@test.com",
+  "role": "STUDENT",
+  "password": "123456",
+  "hostel": "Hostel-A",
+  "block": "A",
+  "room": "101"
+}
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5N2EwZjIzYTg3YjYzMTM0ZThjMmZiOCIsInJvbGUiOiJTVFVERU5UIiwiaWF0IjoxNzY5NjA2OTQ3LCJleHAiOjE3Njk2OTMzNDd9.iJl3J-XxJz2hPz0jlL2GEGqjqb7nIGhZU821Lam7nyE",
+    "user": {
+        "id": "697a0f23a87b63134e8c2fb8",
+        "role": "STUDENT"
+    }
+}
+{
+  "name": "Caretaker Ram",
+  "email": "ram@test.com",
+  "role": "CARETAKER",
+  "password": "123456",
+  "hostels": ["Hostel-A"]
+}
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5N2EwZjRhYTg3YjYzMTM0ZThjMmZiYiIsInJvbGUiOiJDQVJFVEFLRVIiLCJpYXQiOjE3Njk2MDY5ODYsImV4cCI6MTc2OTY5MzM4Nn0.hjdjV5R9EIm0F1TBoMmgxODhRHdraWVOottmUVjeCFs",
+    "user": {
+        "id": "697a0f4aa87b63134e8c2fbb",
+        "role": "CARETAKER"
+    }
+}
+{
+  "name": "Caretaker Shyam",
+  "email": "shyam@test.com",
+  "role": "CARETAKER",
+  "password": "123456",
+  "hostels": ["Hostel-A"]
+}
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5N2EwZjcwYTg3YjYzMTM0ZThjMmZiZSIsInJvbGUiOiJDQVJFVEFLRVIiLCJpYXQiOjE3Njk2MDcwMjQsImV4cCI6MTc2OTY5MzQyNH0.koe1LhklHrcn4gXEVtzaZ2VDCj4G4iRfxcIQEW-0l8o",
+    "user": {
+        "id": "697a0f70a87b63134e8c2fbe",
+        "role": "CARETAKER"
+    }
+}
+{
+  "title": "Fan not working",
+  "description": "Ceiling fan broken",
+  "category": "electrical",
+  "spaceType": "PRIVATE",
+  "block": "A",
+  "room": "101"
+}
