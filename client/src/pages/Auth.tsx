@@ -71,25 +71,6 @@ export default function Auth() {
     }
   };
 
-  const handleDemoLogin = async (roleType: "student" | "management") => {
-    const credentials = {
-      student: { email: "student@hostel.edu", password: "demo123" },
-      management: { email: "admin@hostel.edu", password: "demo123" },
-    };
-
-    const creds = credentials[roleType];
-    setEmail(creds.email);
-    setPassword(creds.password);
-
-    try {
-      await login(creds.email, creds.password);
-      toast.success("Welcome back!");
-      navigate("/dashboard");
-    } catch {
-      setError("Login failed");
-    }
-  };
-
   return (
     <div className="min-h-screen bg-background flex items-center justify-center p-4">
       <div className="w-full max-w-md animate-fade-in">
@@ -215,7 +196,7 @@ export default function Auth() {
             <p className="text-center text-sm mt-4">
               {mode === "login" ? (
                 <>
-                  Don’t have an account?{" "}
+                  Don't have an account?{" "}
                   <button
                     type="button"
                     onClick={() => setMode("register")}
@@ -237,36 +218,8 @@ export default function Auth() {
                 </>
               )}
             </p>
-
-            {mode === "login" && (
-              <>
-                <div className="relative my-6">
-                  <div className="absolute inset-0 flex items-center">
-                    <div className="w-full border-t border-border" />
-                  </div>
-                  <div className="relative flex justify-center text-xs uppercase">
-                    <span className="bg-card px-2 text-muted-foreground">
-                      Demo Accounts
-                    </span>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-2 gap-3">
-                  <Button variant="outline" onClick={() => handleDemoLogin("student")} disabled={isLoading}>
-                    Student
-                  </Button>
-                  <Button variant="outline" onClick={() => handleDemoLogin("management")} disabled={isLoading}>
-                    Management
-                  </Button>
-                </div>
-              </>
-            )}
           </CardContent>
         </Card>
-
-        <p className="text-center text-xs text-muted-foreground mt-6">
-          This is a demo. Use the buttons above to explore different roles.
-        </p>
       </div>
     </div>
   );

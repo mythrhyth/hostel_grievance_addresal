@@ -1,0 +1,67 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./server
+    container_name: hostel-backend
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      MONGODB_URI: mongodb+srv://<username>:<password>@cluster.mongodb.net/hostel_management?retryWrites=true&w=majority
+      JWT_SECRET: your_super_secure_jwt_secret_key_here_change_this_in_production
+      EMAIL_HOST: smtp.gmail.com
+      EMAIL_PORT: 587
+      EMAIL_USER: your_email@gmail.com
+      EMAIL_PASS: your_gmail_app_password_here
+      PORT: 5000
+    volumes:
+      - ./server/uploads:/app/uploads
+    depends_on:
+      - db
+    networks:
+      - hostel-network
+
+  frontend:
+    build: ./client
+    container_name: hostel-frontend
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - backend
+    networks:
+      - hostel-network
+
+  db:
+    image: mongo:latest
+    container_name: hostel-db
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: your_mongo_password_here
+      MONGO_INITDB_DATABASE: hostel_management
+    volumes:
+      - mongodb_data:/data/db
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+    networks:
+      - hostel-network
+
+  redis:
+    image: redis:alpine
+    container_name: hostel-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - hostel-network
+
+volumes:
+  mongodb_data:
+  redis_data:
+
+networks:
+  hostel-network:
+    driver: bridge
